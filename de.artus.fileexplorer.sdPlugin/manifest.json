@@ -135,7 +135,7 @@
     "Description": "Open folders and view their content all on the Stream Deck. Navigate through them and open files with a single click. Also images get displayed directly on the Stream Deck. More features: Open parent folder, scroll through pages, show page info, various click actions.",
     "Icon": "imgs/plugin/marketplace",
     "SDKVersion": 2,
-    "URL": "https://arthurp.de",
+    "URL": "https://github.com/ArtusLama/streamdeck-fileexplorer",
     "Software": {
         "MinimumVersion": "6.6"
     },
