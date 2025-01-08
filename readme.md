@@ -1,10 +1,11 @@
 # Stream Deck File Explorer Plugin
+![FileExplorerImage](https://github.com/user-attachments/assets/0fad42d3-d98e-4e25-92fd-80b2978f6567)
 
-### Description
+# Description
 
 Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy to use tool to view, navigate, and manage your files and folders directly from the Stream Deck. With seamless folder navigation, quick file previews, and pagination features, managing your files has never been easier.
 
-### Features
+# Features
 
 - **View Folder Content**: Display all files and folders in the current directory directly on your Stream Deck.
 - **Folder Navigation**:
@@ -25,21 +26,11 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 
 ---
 
-### For Developers
+# For Developers
 
-#### Installation
+## Installation + Running
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/stream-deck-file-explorer.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd stream-deck-file-explorer
-    ```
-3. Follow the building instructions below to deploy the plugin to your Stream Deck.
-
-#### Running
+(clone and cd into the project first)
 
 0. **If you don't have already:**
     ```bash
@@ -59,13 +50,13 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
     ```
 4. Now you should see the plugin inside your Stream Deck application.
 
-#### Development Notes
+## Development Notes
 
 - If you have any problems, refer to the Stream Deck [Plugin Documentation](https://docs.elgato.com/streamdeck/sdk/introduction/getting-started) or contact me.
 
 ---
 
-### Roadmap / ToDos
+# Roadmap / ToDos
 
 - Create profiles for other devices (Pro, XL)
 - Click Action:
@@ -76,7 +67,8 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 - Github Actions workflow for linting
 - Translations (i18n)
 - Change PNGs to SVGs
+- ADD CODE DOCS!!!
 
-### License
+# License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
