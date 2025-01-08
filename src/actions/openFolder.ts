@@ -1,41 +1,52 @@
-import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, KeyDownEvent, SingletonAction, WillAppearEvent, WillDisappearEvent } from "@elgato/streamdeck";
-import { FolderViewDevices } from "../util/folderViewDevices";
+import streamDeck, {
+	action,
+	DidReceiveSettingsEvent,
+	JsonObject,
+	KeyDownEvent,
+	SingletonAction,
+	WillAppearEvent,
+	WillDisappearEvent,
+} from "@elgato/streamdeck";
 import fs from "fs";
 import path from "path";
 
+import { FolderViewDevices } from "../util/folderViewDevices";
+
 function isFolderValid(folderPath: string): boolean {
-    try {
-        const fullPath = path.resolve(folderPath);
-        return fs.existsSync(fullPath) && fs.lstatSync(fullPath).isDirectory();
-    } catch (error) {
-        streamDeck.logger.error('Error checking folder:', error);
-        return false;
-    }
+	try {
+		const fullPath = path.resolve(folderPath);
+		return fs.existsSync(fullPath) && fs.lstatSync(fullPath).isDirectory();
+	} catch (error) {
+		streamDeck.logger.error("Error checking folder:", error);
+		return false;
+	}
 }
 
 @action({ UUID: "de.artus.fileexplorer.openfolder" })
 export class OpenFolder extends SingletonAction<OpenFolderSettings> {
-    
-    private folderViewDevices: FolderViewDevices;
+	private folderViewDevices: FolderViewDevices;
 
-    constructor(folderViewDevices: FolderViewDevices) {
-        super();
-        this.folderViewDevices = folderViewDevices;
-    }
+	constructor(folderViewDevices: FolderViewDevices) {
+		super();
+		this.folderViewDevices = folderViewDevices;
+	}
 
-    override async onKeyDown(event: KeyDownEvent<OpenFolderSettings>): Promise<void> {
-        const folderView = this.folderViewDevices.get(event.action.device.id);
-        if (!folderView) return;
+	override async onKeyDown(event: KeyDownEvent<OpenFolderSettings>): Promise<void> {
+		const folderView = this.folderViewDevices.get(event.action.device.id);
+		if (!folderView) return;
 
-        const folderpath = event.payload.settings.folderpath;
-        if (!folderpath || !isFolderValid(folderpath)) return;
+		const folderpath = event.payload.settings.folderpath;
+		if (!folderpath || !isFolderValid(folderpath)) return;
 
-        await folderView.openFolder(folderpath);
-        streamDeck.profiles.switchToProfile(event.action.device.id, "FolderView");
-    }
+		await folderView.openFolder(folderpath);
 
+		if (event.payload.settings.openProfile) {
+			streamDeck.profiles.switchToProfile(event.action.device.id, "FolderView");
+		}
+	}
 }
 
 type OpenFolderSettings = {
-    folderpath: string;
-}
+	folderpath: string;
+	openProfile: boolean;
+};

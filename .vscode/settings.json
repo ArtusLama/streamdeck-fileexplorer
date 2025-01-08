@@ -1,17 +1,22 @@
 {
-	/* JSON schemas */
-	"json.schemas": [
-		{
-			"fileMatch": [
-				"**/manifest.json"
-			],
-			"url": "https://schemas.elgato.com/streamdeck/plugins/manifest.json"
-		},
-		{
-			"fileMatch": [
-				"**/layouts/*.json"
-			],
-			"url": "https://schemas.elgato.com/streamdeck/plugins/layout.json"
-		}
-	]
+    /* JSON schemas */
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/manifest.json"
+            ],
+            "url": "https://schemas.elgato.com/streamdeck/plugins/manifest.json"
+        },
+        {
+            "fileMatch": [
+                "**/layouts/*.json"
+            ],
+            "url": "https://schemas.elgato.com/streamdeck/plugins/layout.json"
+        }
+    ],
+
+    /* Editor settings */
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.enable": false
 }

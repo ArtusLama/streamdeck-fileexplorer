@@ -18,22 +18,23 @@ const config = {
 		sourcemap: isWatching,
 		sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
 			return url.pathToFileURL(path.resolve(path.dirname(sourcemapPath), relativeSourcePath)).href;
-		}
+		},
 	},
 	plugins: [
 		{
 			name: "watch-externals",
 			buildStart: function () {
 				this.addWatchFile(`${sdPlugin}/manifest.json`);
+				this.addWatchFile(`${sdPlugin}/ui/`);
 			},
 		},
 		typescript({
-			mapRoot: isWatching ? "./" : undefined
+			mapRoot: isWatching ? "./" : undefined,
 		}),
 		nodeResolve({
 			browser: false,
 			exportConditions: ["node"],
-			preferBuiltins: true
+			preferBuiltins: true,
 		}),
 		commonjs(),
 		!isWatching && terser(),
@@ -41,9 +42,9 @@ const config = {
 			name: "emit-module-package-file",
 			generateBundle() {
 				this.emitFile({ fileName: "package.json", source: `{ "type": "module" }`, type: "asset" });
-			}
-		}
-	]
+			},
+		},
+	],
 };
 
 export default config;
