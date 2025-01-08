@@ -1,11 +1,7 @@
 import streamDeck, {
 	action,
-	DidReceiveSettingsEvent,
-	JsonObject,
 	KeyDownEvent,
 	SingletonAction,
-	WillAppearEvent,
-	WillDisappearEvent,
 } from "@elgato/streamdeck";
 import fs from "fs";
 import path from "path";
