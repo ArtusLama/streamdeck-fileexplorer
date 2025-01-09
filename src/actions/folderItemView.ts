@@ -14,7 +14,6 @@ import { FolderItem } from "../util/folderItem";
 import { FolderView } from "../util/folderView";
 import { FolderViewDevices } from "../util/folderViewDevices";
 
-// TODO: flickering / sorting kinda updates when opening the profile at first since willAppear is called => recalculates everything
 @action({ UUID: "de.artus.fileexplorer.folderitemview" })
 export class FolderItemView extends SingletonAction<JsonObject> {
 
