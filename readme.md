@@ -1,4 +1,5 @@
 # Stream Deck File Explorer Plugin
+
 ![FileExplorerImage](https://github.com/user-attachments/assets/0fad42d3-d98e-4e25-92fd-80b2978f6567)
 
 # Description
@@ -58,7 +59,8 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 
 # Roadmap / ToDos
 
-- Create profiles for other devices (Pro, XL)
+- Create profiles for other devices (+, XL)
+- (Dial Rotate => pagination)
 - Click Action:
     - Single -> opens file/folder;
     - Long Press -> opens file/folder manage screen/profile (e.g. deleting, show in explorer, ...)
@@ -66,7 +68,6 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 - Test on other devices (mac and linux)
 - Github Actions workflow for linting
 - Translations (i18n)
-- Change PNGs to SVGs
 - ADD CODE DOCS!!!
 
 # License
