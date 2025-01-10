@@ -1,13 +1,6 @@
-import {
-	action,
-	KeyDownEvent,
-	SingletonAction,
-	WillAppearEvent,
-	WillDisappearEvent,
-} from "@elgato/streamdeck";
+import { action, KeyDownEvent, SingletonAction, WillAppearEvent, WillDisappearEvent } from "@elgato/streamdeck";
 
 import { FolderViewDevices } from "../util/folderViewDevices";
-
 
 @action({ UUID: "de.artus.fileexplorer.pageinfo" })
 export class PageInfo extends SingletonAction<PageInfoSettings> {
@@ -37,9 +30,7 @@ export class PageInfo extends SingletonAction<PageInfoSettings> {
 		const folderView = this.folderViewDevices.get(deviceId);
 		if (!folderView) return;
 
-		const action = this.actions
-			.filter((action) => action.device.id === deviceId)
-			.find((action) => action.id === actionId);
+		const action = this.actions.filter((action) => action.device.id === deviceId).find((action) => action.id === actionId);
 		if (!action) return;
 		if (!action.isKey() || action.isInMultiAction()) return;
 

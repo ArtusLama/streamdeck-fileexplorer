@@ -2,10 +2,11 @@
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart de.artus.fileexplorer\"",
-        "lint:check": "prettier . --check",
-        "lint:fix": "prettier . --write"
+        "lint": "eslint . --ext .ts",
+        "format": "prettier --write ."
     },
     "type": "module",
+    "prettier": "@elgato/prettier-config",
     "devDependencies": {
         "@elgato/cli": "^1.1.0",
         "@elgato/prettier-config": "^0.2.4",
@@ -15,6 +16,11 @@
         "@rollup/plugin-typescript": "^12.1.0",
         "@tsconfig/node20": "^20.1.2",
         "@types/node": "~20.15.0",
+        "@typescript-eslint/eslint-plugin": "^8.19.1",
+        "@typescript-eslint/parser": "^8.19.1",
+        "eslint": "^8.12.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
         "rollup": "^4.0.2",
         "tslib": "^2.6.2",
         "typescript": "^5.2.2"
@@ -22,6 +28,5 @@
     "dependencies": {
         "@elgato/streamdeck": "^1.0.0",
         "open": "^10.1.0"
-    },
-    "prettier": "@elgato/prettier-config"
+    }
 }

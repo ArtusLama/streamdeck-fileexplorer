@@ -68,6 +68,7 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 - Test on other devices (mac and linux)
 - Github Actions workflow for linting
 - Translations (i18n)
+- Add open folder radio options: open on stream deck (in the profile) / open directly in local file explorer / more
 - ADD CODE DOCS!!!
 
 # License

@@ -16,7 +16,6 @@ import { FolderViewDevices } from "../util/folderViewDevices";
 
 @action({ UUID: "de.artus.fileexplorer.folderitemview" })
 export class FolderItemView extends SingletonAction<JsonObject> {
-
 	// To prevent multiple updates in a short time => to prevent flickering
 	private actionLoadTimeout = new Map<string, NodeJS.Timeout>();
 	private actionLoadTimeoutTime = 50;
@@ -29,17 +28,17 @@ export class FolderItemView extends SingletonAction<JsonObject> {
 	}
 
 	private handleTimeoutAction(deviceId: string, action: () => void) {
-        if (this.actionLoadTimeout.has(deviceId)) {
-            clearTimeout(this.actionLoadTimeout.get(deviceId)!);
-        }
+		if (this.actionLoadTimeout.has(deviceId)) {
+			clearTimeout(this.actionLoadTimeout.get(deviceId)!);
+		}
 
-        const timeout = setTimeout(() => {
-            action();
-            this.actionLoadTimeout.delete(deviceId);
-        }, this.actionLoadTimeoutTime);
+		const timeout = setTimeout(() => {
+			action();
+			this.actionLoadTimeout.delete(deviceId);
+		}, this.actionLoadTimeoutTime);
 
-        this.actionLoadTimeout.set(deviceId, timeout);
-    }
+		this.actionLoadTimeout.set(deviceId, timeout);
+	}
 
 	private reloadKeysWithTimeout(deviceId: string, folderView: FolderView) {
 		this.handleTimeoutAction(deviceId, () => {
@@ -132,9 +131,7 @@ export class FolderItemView extends SingletonAction<JsonObject> {
 	}
 
 	private getActionForDevice(actionId: string, deviceId: string): KeyAction<JsonObject> | DialAction<JsonObject> | undefined {
-		return this.actions
-			.filter((action) => this.isValidActionForDevice(action, deviceId))
-			.find((action) => action.id === actionId);
+		return this.actions.filter((action) => this.isValidActionForDevice(action, deviceId)).find((action) => action.id === actionId);
 	}
 
 	private onUpdateFolderView(actionId: string, deviceId: string, folderView: FolderView): void {
@@ -178,5 +175,4 @@ export class FolderItemView extends SingletonAction<JsonObject> {
 		action.setTitle("");
 		action.setState(2);
 	}
-
 }

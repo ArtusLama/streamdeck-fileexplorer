@@ -1,8 +1,4 @@
-import streamDeck, {
-	action,
-	KeyDownEvent,
-	SingletonAction,
-} from "@elgato/streamdeck";
+import streamDeck, { action, KeyDownEvent, SingletonAction } from "@elgato/streamdeck";
 import fs from "fs";
 import path from "path";
 

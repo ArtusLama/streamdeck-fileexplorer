@@ -11,7 +11,6 @@ type FolderViewEvents = {
 };
 
 export class FolderView extends EventEmitter<FolderViewEvents> {
-
 	public currentFolderPath: string | null = null;
 	public folderItems: Pagination<FolderItem> = new Pagination();
 	public actionItemOffsets: Map<string, number> = new Map();
