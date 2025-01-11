@@ -60,7 +60,6 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 # Roadmap / ToDos
 
 - Create profiles for other devices (+, XL)
-- (Dial Rotate => pagination)
 - Click Action:
     - Single -> opens file/folder;
     - Long Press -> opens file/folder manage screen/profile (e.g. deleting, show in explorer, ...)
@@ -69,6 +68,8 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 - Github Actions workflow for linting
 - Translations (i18n)
 - Add open folder radio options: open on stream deck (in the profile) / open directly in local file explorer / more
+- For open folder action: Detect whether the plugin runs on mac or windows and change placeholder text accordingly
+- better and longer descriptions for actions in the property inspector
 - ADD CODE DOCS!!!
 
 # License
