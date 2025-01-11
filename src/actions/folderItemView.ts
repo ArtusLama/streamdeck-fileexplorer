@@ -160,8 +160,6 @@ export class FolderItemView extends SingletonAction<JsonObject> {
 	private async updateAction(action: KeyAction<JsonObject> | DialAction<JsonObject>, item: FolderItem): Promise<void> {
 		if (!this.isValidAction(action)) return;
 
-		await action.setImage(undefined);
-
 		const title = this.formatTitle(item.getName());
 		await action.setTitle(title || item.getName());
 		await action.setState(item.isDirectory() ? 0 : 1);
