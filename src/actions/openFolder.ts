@@ -1,4 +1,4 @@
-import streamDeck, { action, KeyDownEvent, SingletonAction } from "@elgato/streamdeck";
+import streamDeck, { action, DeviceType, KeyDownEvent, SingletonAction } from "@elgato/streamdeck";
 import fs from "fs";
 import path from "path";
 
@@ -33,7 +33,17 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
 		await folderView.openFolder(folderpath);
 
 		if (event.payload.settings.openProfile) {
-			streamDeck.profiles.switchToProfile(event.action.device.id, "FolderView");
+			const profileMap: Partial<Record<DeviceType, string>> = {
+				0: "FolderView",
+				2: "FolderViewXL",
+				7: "FolderViewPlus",
+			};
+
+			const profileName = profileMap[event.action.device.type];
+
+			if (profileName) {
+				await streamDeck.profiles.switchToProfile(event.action.device.id, profileName);
+			}
 		}
 	}
 }

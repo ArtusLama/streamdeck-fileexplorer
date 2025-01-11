@@ -125,7 +125,21 @@
             "Name": "FolderView",
             "DeviceType": 0,
             "Readonly": false,
-            "DontAutoSwitchWhenInstalled": false,
+            "DontAutoSwitchWhenInstalled": true,
+            "AutoInstall": true
+        },
+        {
+            "Name": "FolderViewXL",
+            "DeviceType": 2,
+            "Readonly": false,
+            "DontAutoSwitchWhenInstalled": true,
+            "AutoInstall": true
+        },
+        {
+            "Name": "FolderViewPlus",
+            "DeviceType": 7,
+            "Readonly": false,
+            "DontAutoSwitchWhenInstalled": true,
             "AutoInstall": true
         }
     ],
