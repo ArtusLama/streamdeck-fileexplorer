@@ -1,171 +1,171 @@
 {
-    "Name": "FileExplorer",
-    "Version": "0.1.0.0",
-    "Author": "Arthur P.",
-    "Actions": [
-        {
-            "Name": "Folder Item View",
-            "UUID": "de.artus.fileexplorer.folderitemview",
-            "Icon": "imgs/actions/icons/file",
-            "Tooltip": "Displays a count, which increments by one on press.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/folder",
-                    "TitleAlignment": "middle"
-                },
-                {
-                    "Image": "imgs/actions/file",
-                    "TitleAlignment": "middle"
-                },
-                {
-                    "Image": "imgs/actions/empty",
-                    "TitleAlignment": "middle"
-                }
-            ]
-        },
-        {
-            "Name": "Open Parent Folder",
-            "UUID": "de.artus.fileexplorer.openparent",
-            "Icon": "imgs/actions/icons/open-parent",
-            "Tooltip": "Opens the parent folder of the current folder.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/open-parent",
-                    "TitleAlignment": "bottom"
-                }
-            ]
-        },
-        {
-            "Name": "Scroll left",
-            "UUID": "de.artus.fileexplorer.previouspage",
-            "Icon": "imgs/actions/icons/previous",
-            "Tooltip": "Opens the previous page of the current folder.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "PropertyInspectorPath": "ui/pagination-arrow-previous.html",
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/previous",
-                    "TitleAlignment": "bottom"
-                },
-                {
-                    "Image": "imgs/actions/previous-end",
-                    "TitleAlignment": "bottom"
-                }
-            ]
-        },
-        {
-            "Name": "Scroll right",
-            "UUID": "de.artus.fileexplorer.nextpage",
-            "Icon": "imgs/actions/icons/next",
-            "Tooltip": "Opens the next page of the current folder.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "PropertyInspectorPath": "ui/pagination-arrow-next.html",
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/next",
-                    "TitleAlignment": "bottom"
-                },
-                {
-                    "Image": "imgs/actions/next-end",
-                    "TitleAlignment": "bottom"
-                }
-            ]
-        },
-        {
-            "Name": "Page Info",
-            "UUID": "de.artus.fileexplorer.pageinfo",
-            "Icon": "imgs/actions/icons/page-info",
-            "Tooltip": "Shows the current page and the total amount of pages.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "PropertyInspectorPath": "ui/page-info-settings.html",
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/page-info",
-                    "TitleAlignment": "middle"
-                }
-            ]
-        },
-        {
-            "Name": "Open Folder",
-            "UUID": "de.artus.fileexplorer.openfolder",
-            "Icon": "imgs/actions/icons/open-path",
-            "Tooltip": "Opens the selected folder.",
-            "Controllers": [
-                "Keypad"
-            ],
-            "PropertyInspectorPath": "ui/open-folder.html",
-            "DisableAutomaticStates": true,
-            "States": [
-                {
-                    "Image": "imgs/actions/open-path",
-                    "TitleAlignment": "bottom"
-                }
-            ]
-        }
-    ],
-    "Profiles": [
-        {
-            "Name": "FolderView",
-            "DeviceType": 0,
-            "Readonly": false,
-            "DontAutoSwitchWhenInstalled": true,
-            "AutoInstall": true
-        },
-        {
-            "Name": "FolderViewXL",
-            "DeviceType": 2,
-            "Readonly": false,
-            "DontAutoSwitchWhenInstalled": true,
-            "AutoInstall": true
-        },
-        {
-            "Name": "FolderViewPlus",
-            "DeviceType": 7,
-            "Readonly": false,
-            "DontAutoSwitchWhenInstalled": true,
-            "AutoInstall": true
-        }
-    ],
-    "Category": "FileExplorer",
-    "CategoryIcon": "imgs/plugin/category-icon",
-    "CodePath": "bin/plugin.js",
-    "Description": "Open folders and view their content all on the Stream Deck. Navigate through them and open files with a single click. Also images get displayed directly on the Stream Deck. More features: Open parent folder, scroll through pages, show page info, various click actions.",
-    "Icon": "imgs/plugin/marketplace",
-    "SDKVersion": 2,
-    "URL": "https://github.com/ArtusLama/streamdeck-fileexplorer",
-    "Software": {
-        "MinimumVersion": "6.6"
-    },
-    "OS": [
-        {
-            "Platform": "mac",
-            "MinimumVersion": "10.15"
-        },
-        {
-            "Platform": "windows",
-            "MinimumVersion": "10"
-        }
-    ],
-    "Nodejs": {
-        "Version": "20",
-        "Debug": "enabled"
-    },
-    "UUID": "de.artus.fileexplorer"
+	"Name": "FileExplorer",
+	"Version": "0.1.0.1",
+	"Author": "Arthur P.",
+	"Actions": [
+		{
+			"Name": "Folder Item View",
+			"UUID": "de.artus.fileexplorer.folderitemview",
+			"Icon": "imgs/actions/icons/file",
+			"Tooltip": "Displays a count, which increments by one on press.",
+			"Controllers": [
+				"Keypad"
+			],
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/folder",
+					"TitleAlignment": "middle"
+				},
+				{
+					"Image": "imgs/actions/file",
+					"TitleAlignment": "middle"
+				},
+				{
+					"Image": "imgs/actions/empty",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Open Parent Folder",
+			"UUID": "de.artus.fileexplorer.openparent",
+			"Icon": "imgs/actions/icons/open-parent",
+			"Tooltip": "Opens the parent folder of the current folder.",
+			"Controllers": [
+				"Keypad"
+			],
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/open-parent",
+					"TitleAlignment": "bottom"
+				}
+			]
+		},
+		{
+			"Name": "Scroll left",
+			"UUID": "de.artus.fileexplorer.previouspage",
+			"Icon": "imgs/actions/icons/previous",
+			"Tooltip": "Opens the previous page of the current folder.",
+			"Controllers": [
+				"Keypad"
+			],
+			"PropertyInspectorPath": "ui/pagination-arrow-previous.html",
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/previous",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/previous-end",
+					"TitleAlignment": "bottom"
+				}
+			]
+		},
+		{
+			"Name": "Scroll right",
+			"UUID": "de.artus.fileexplorer.nextpage",
+			"Icon": "imgs/actions/icons/next",
+			"Tooltip": "Opens the next page of the current folder.",
+			"Controllers": [
+				"Keypad"
+			],
+			"PropertyInspectorPath": "ui/pagination-arrow-next.html",
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/next",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/next-end",
+					"TitleAlignment": "bottom"
+				}
+			]
+		},
+		{
+			"Name": "Page Info",
+			"UUID": "de.artus.fileexplorer.pageinfo",
+			"Icon": "imgs/actions/icons/page-info",
+			"Tooltip": "Shows the current page and the total amount of pages.",
+			"Controllers": [
+				"Keypad"
+			],
+			"PropertyInspectorPath": "ui/page-info-settings.html",
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/page-info",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Open Folder",
+			"UUID": "de.artus.fileexplorer.openfolder",
+			"Icon": "imgs/actions/icons/open-path",
+			"Tooltip": "Opens the selected folder.",
+			"Controllers": [
+				"Keypad"
+			],
+			"PropertyInspectorPath": "ui/open-folder.html",
+			"DisableAutomaticStates": true,
+			"States": [
+				{
+					"Image": "imgs/actions/open-path",
+					"TitleAlignment": "bottom"
+				}
+			]
+		}
+	],
+	"Profiles": [
+		{
+			"Name": "FolderView",
+			"DeviceType": 0,
+			"Readonly": false,
+			"DontAutoSwitchWhenInstalled": true,
+			"AutoInstall": false
+		},
+		{
+			"Name": "FolderViewXL",
+			"DeviceType": 2,
+			"Readonly": false,
+			"DontAutoSwitchWhenInstalled": true,
+			"AutoInstall": false
+		},
+		{
+			"Name": "FolderViewPlus",
+			"DeviceType": 7,
+			"Readonly": false,
+			"DontAutoSwitchWhenInstalled": true,
+			"AutoInstall": false
+		}
+	],
+	"Category": "FileExplorer",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Open folders and view their content all on the Stream Deck. Navigate through them and open files with a single click. Also images get displayed directly on the Stream Deck. More features: Open parent folder, scroll through pages, show page info, various click actions.",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 2,
+	"URL": "https://github.com/ArtusLama/streamdeck-fileexplorer",
+	"Software": {
+		"MinimumVersion": "6.6"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "10.15"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "de.artus.fileexplorer"
 }

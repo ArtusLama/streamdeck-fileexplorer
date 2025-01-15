@@ -32,7 +32,7 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
 
 		await folderView.openFolder(folderpath);
 
-		if (event.payload.settings.openProfile) {
+		if (event.payload.settings.openProfile ?? true) {
 			const profileMap: Partial<Record<DeviceType, string>> = {
 				0: "FolderView",
 				2: "FolderViewXL",
@@ -50,5 +50,5 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
 
 type OpenFolderSettings = {
 	folderpath: string;
-	openProfile: boolean;
+	openProfile: boolean | undefined;
 };
