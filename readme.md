@@ -59,7 +59,6 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 
 # Roadmap / ToDos
 
-- Create profiles for other devices (+, XL)
 - Click Action:
     - Single -> opens file/folder;
     - Long Press -> opens file/folder manage screen/profile (e.g. deleting, show in explorer, ...)
