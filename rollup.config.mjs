@@ -4,7 +4,10 @@ import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import path from "node:path";
 import url from "node:url";
+import copy from "rollup-plugin-copy";
+import native from "rollup-plugin-native";
 
+/*global process*/
 const isWatching = !!process.env.ROLLUP_WATCH;
 const sdPlugin = "de.artus.fileexplorer.sdPlugin";
 
@@ -31,6 +34,7 @@ const config = {
 		typescript({
 			mapRoot: isWatching ? "./" : undefined,
 		}),
+		native(),
 		nodeResolve({
 			browser: false,
 			exportConditions: ["node"],
@@ -44,6 +48,15 @@ const config = {
 				this.emitFile({ fileName: "package.json", source: `{ "type": "module" }`, type: "asset" });
 			},
 		},
+		copy({
+			copyOnce: true,
+			targets: [
+				{
+					src: "node_modules/is-hidden-file/",
+					dest: `${sdPlugin}/bin/node_modules`,
+				},
+			],
+		}),
 	],
 };
 

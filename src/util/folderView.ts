@@ -1,5 +1,6 @@
 import streamDeck, { EventEmitter } from "@elgato/streamdeck";
 import fs from "fs";
+import { isHiddenFile } from "@freik/is-hidden-file";
 import open from "open";
 import path from "path";
 
@@ -11,6 +12,7 @@ type FolderViewEvents = {
 };
 
 export class FolderView extends EventEmitter<FolderViewEvents> {
+	public showHiddenFilesAndFolders: boolean = false;
 	public currentFolderPath: string | null = null;
 	public folderItems: Pagination<FolderItem> = new Pagination();
 	public actionItemOffsets: Map<string, number> = new Map();
@@ -52,7 +54,9 @@ export class FolderView extends EventEmitter<FolderViewEvents> {
 		}
 
 		const files = await fs.promises.readdir(folderPath);
-		const items = files.map((file) => new FolderItem(path.join(folderPath, file)));
+		const items = files
+			.filter((file) => this.showHiddenFilesAndFolders || !isHiddenFile(file))
+			.map((file) => new FolderItem(path.join(folderPath, file)));
 
 		items.sort((a, b) => {
 			const aIsDir = a.isDirectory();

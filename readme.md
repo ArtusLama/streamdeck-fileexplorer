@@ -8,7 +8,9 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 
 # Features
 
-- **View Folder Content**: Display all files and folders in the current directory directly on your Stream Deck.
+- **View Folder Content**: 
+    - Display all files and folders in the current directory directly on your Stream Deck.
+    - Show or hide native os files and folders.
 - **Folder Navigation**:
     - Open subfolders by clicking on them.
     - Navigate to the parent folder with a single click.

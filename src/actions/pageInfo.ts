@@ -1,4 +1,4 @@
-import { action, KeyDownEvent, SingletonAction, WillAppearEvent, WillDisappearEvent } from "@elgato/streamdeck";
+import { action, DidReceiveSettingsEvent, KeyDownEvent, SingletonAction, WillAppearEvent, WillDisappearEvent } from "@elgato/streamdeck";
 
 import { FolderViewDevices } from "../util/folderViewDevices";
 
@@ -9,6 +9,16 @@ export class PageInfo extends SingletonAction<PageInfoSettings> {
 	constructor(folderViewDevices: FolderViewDevices) {
 		super();
 		this.folderViewDevices = folderViewDevices;
+	}
+
+	override onDidReceiveSettings(ev: DidReceiveSettingsEvent<PageInfoSettings>): Promise<void> | void {
+		const folderView = this.folderViewDevices.get(ev.action.device.id);
+		if (!folderView) return;
+
+		folderView.showHiddenFilesAndFolders = ev.payload.settings.showHiddenFilesAndFolders ?? false;
+		if (folderView.currentFolderPath) {
+			folderView.loadFolderItems(folderView.currentFolderPath);
+		}
 	}
 
 	override onWillAppear(event: WillAppearEvent<PageInfoSettings>): Promise<void> | void {
@@ -57,4 +67,5 @@ export class PageInfo extends SingletonAction<PageInfoSettings> {
 
 type PageInfoSettings = {
 	clickAction: "nothing" | "openFileExplorer" | "goToFirstPage";
+	showHiddenFilesAndFolders: boolean | undefined;
 };
