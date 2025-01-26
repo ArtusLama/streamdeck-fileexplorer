@@ -35,11 +35,11 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
 
 0. **If you don't have already:**
     ```bash
-    npm install -g @elgato/cli
+    yarn install -g @elgato/cli
     ```
 1. Install dependencies:
     ```bash
-    npm install
+    yarn install
     ```
 2. Linking the plugin:
     ```bash
@@ -47,7 +47,7 @@ Enhance your Stream Deck with the **File Explorer Plugin**, a powerful and easy 
     ```
 3. Running the plugin:
     ```bash
-    npm run watch
+    yarn run watch
     ```
 4. Now you should see the plugin inside your Stream Deck application.
 
