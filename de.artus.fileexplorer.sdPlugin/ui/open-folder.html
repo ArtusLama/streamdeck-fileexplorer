@@ -10,7 +10,14 @@
 			<sdpi-textfield setting="folderpath" placeholder="C:/your/folder" required></sdpi-textfield>
 		</sdpi-item>
 		<sdpi-item label="On click">
-			<sdpi-checkbox setting="openProfile" label="Open profile" default="true"></sdpi-checkbox>
+			<sdpi-radio setting="clickAction" columns="1" default="profile">
+				<option value="profile">Open as Profile</option>
+				<option value="explorer">Open in Explorer</option>
+			</sdpi-radio>
+		</sdpi-item>
+		<sdpi-item label="On click">
+			<sdpi-checkbox setting="openProfile" label="Automatically open profile" default="true"></sdpi-checkbox>
+			<p>Only works if 'Open as Profile' is selected. To view your files manually switch to the FolderView profile!</p>
 		</sdpi-item>
 	</body>
 </html>
