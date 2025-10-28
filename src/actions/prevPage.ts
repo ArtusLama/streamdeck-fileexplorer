@@ -151,7 +151,7 @@ export class PrevPage extends SingletonAction<PrevPageSettings> {
     }
 
     public sendClickAnalytics(direction: "backward" | "forward", target: "first" | "last" | "next" | "previous"): void {
-        Analytics.instance.sendEvent({
+        Analytics.instance?.sendEvent({
             event: "page_navigated",
             properties: {
                 direction: direction,

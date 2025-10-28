@@ -24,7 +24,7 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
 
         if (settings.folderpath) {
 
-            Analytics.instance.sendEvent({
+            Analytics.instance?.sendEvent({
                 event: "open_folder",
                 properties: {
                     open_action: settings.openaction || "unknown"

@@ -25,7 +25,7 @@ async function isInitialLaunch(): Promise<boolean> {
 
 class Analytics {
 
-    public static instance: Analytics;
+    public static instance?: Analytics;
 
 
     public client: PostHog;
@@ -33,7 +33,7 @@ class Analytics {
 
     constructor(secret: string, host: string) {
         if (Analytics.instance) {
-            Analytics.instance.client.shutdown();
+            Analytics.instance?.client.shutdown();
         }
 
         Analytics.instance = this;
@@ -93,8 +93,12 @@ class Analytics {
 
 }
 
-async function createAnalytics(): Promise<Analytics> {
+async function createAnalytics(): Promise<Analytics | undefined> {
     const secrets = await streamDeck.system.getSecrets<PluginSecrets>();
+    if (!secrets.POSTHOG_API_KEY || !secrets.POSTHOG_HOST) {
+        streamDeck.logger.warn("Missing PostHog API key or host. Disabling analytics.");
+        return undefined;
+    }
     return new Analytics(
         secrets.POSTHOG_API_KEY,
         secrets.POSTHOG_HOST

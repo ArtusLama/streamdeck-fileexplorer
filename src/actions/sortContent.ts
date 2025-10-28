@@ -180,7 +180,7 @@ export class SortContent extends SingletonAction<SortContentSettings> {
     }
 
     public sendAnalytics(changed: "sort_direction" | "sort_type"): void {
-        Analytics.instance.sendEvent({
+        Analytics.instance?.sendEvent({
             event: "sort_changed",
             properties: {
                 changed: changed

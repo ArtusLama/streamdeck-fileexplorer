@@ -178,7 +178,7 @@ export class FolderItemView extends SingletonAction<FolderItemViewSettings> {
 
 
     public sendClickAnalytics(actionType: "long" | "normal"): void {
-        Analytics.instance.sendEvent({
+        Analytics.instance?.sendEvent({
             event: "folder_item_clicked",
             properties: {
                 click_type: actionType

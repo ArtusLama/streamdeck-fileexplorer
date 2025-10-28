@@ -16,7 +16,7 @@ export class OpenParentFolder extends SingletonAction<OpenParentFolderSettings> 
         if (!folderView.currentPath) return;
 
         folderView.loadParentFolder();
-        Analytics.instance.sendEvent({
+        Analytics.instance?.sendEvent({
             event: "open_parent_folder"
         });
     }

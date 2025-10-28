@@ -36,7 +36,7 @@ async function startup(): Promise<void> {
     streamDeck.logger.info("Connected to StreamDeck");
 
     await createAnalytics();
-    await Analytics.instance.startup();
+    await Analytics.instance?.startup();
 
     streamDeck.system.onApplicationDidTerminate(shutdown);
 
@@ -47,7 +47,7 @@ async function shutdown(): Promise<void> {
     FolderViewManager.instance.clear();
 
     streamDeck.logger.info("StreamDeck disconnected");
-    await Analytics.instance.shutdown();
+    await Analytics.instance?.shutdown();
 }
 
 
