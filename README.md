@@ -63,6 +63,8 @@ In addition, you can open them in your native file explorer, in the CMD/Terminal
 - `Click Action:`<br>
   A dropdown to choose what happens when you press the button. Available options are:
   - `Open on StreamDeck:` Displays the folder content using the [Folder Item View](#folder-item-view) actions on the StreamDeck.
+      - If selected, you can choose to automatically open the profile provided by the plugin.
+      - For maximum flexibility, use a Multi Action that combines the Open action with, for example, the built-in Switch Profile action to achieve similar behavior.
   - `Open in native file explorer:` Opens the folderpath using your systems native file explorer.
   - `Open in Terminal / CMD:` Opens the folderpath in your native terminal/cmd.
   - `Run custom command (advanced):` Specify a custom run command. You can use `{path}` as variable in your command to execute all kind of things related to that folderpath.
