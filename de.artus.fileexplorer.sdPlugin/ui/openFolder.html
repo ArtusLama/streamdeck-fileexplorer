@@ -36,13 +36,23 @@
     </sdpi-item>
 
     <sdpi-item id="openprofileitem">
-        <p>Automatically open the FileExplorerView Profile when the folder gets opened.</p>
+        <p>
+            Automatically open the FileExplorerView Profile when the folder gets opened.
+            <br>
+            <b>
+                NOTE: Only MK2 StreamDecks currently support that. For other StreamDecks you have to create your own Profile and switching logic!
+            </b>
+        </p>
         <sdpi-checkbox setting="openprofile" label="Automatically open Profile" default="true"></sdpi-checkbox>
         <p>Alternatively, you can use a Multi-Action and a SwitchProfile Action to achieve similar functionality.</p>
     </sdpi-item>
 
     <sdpi-item id="customcommanditem">
-        <p>Shell command where <code>{path}</code> gets replaced with your selected folder path. Example command: <code>explorer {path}</code></p>
+        <p>
+            Shell command where <code>{path}</code> gets replaced with your selected folder path. Example command: <code>explorer {path}</code>
+            <br>
+            Note that no shell will appear by default. Instead it will execute it in the background.
+        </p>
         <sdpi-textarea
             setting="customcommand"
         ></sdpi-textarea>
