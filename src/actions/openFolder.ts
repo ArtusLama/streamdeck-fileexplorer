@@ -24,12 +24,14 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
 
         if (settings.folderpath) {
 
-            Analytics.instance?.sendEvent({
-                event: "open_folder",
-                properties: {
-                    open_action: settings.openaction || "unknown"
-                }
-            });
+            if (settings.openaction) {
+                Analytics.instance?.sendEvent({
+                    event: "open_folder",
+                    properties: {
+                        open_action: settings.openaction
+                    }
+                });
+            }
 
             switch (settings.openaction) {
                 case "streamdeck":
