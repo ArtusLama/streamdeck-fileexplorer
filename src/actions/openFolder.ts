@@ -1,4 +1,4 @@
-import streamDeck, { action, KeyDownEvent, SendToPluginEvent, SingletonAction } from "@elgato/streamdeck";
+import streamDeck, { action, DialAction, DidReceiveSettingsEvent, KeyAction, KeyDownEvent, PropertyInspectorDidAppearEvent, SendToPluginEvent, SingletonAction } from "@elgato/streamdeck";
 import { OpenFolderSettings } from "../types/actions/settings/openFolderSettings";
 import { FileSystem } from "../filesystem/wrapper/impl/fileSystem";
 import spawn from "cross-spawn";
@@ -71,10 +71,13 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
                     break;
 
                 default:
+                    ev.action.showAlert();
                     streamDeck.logger.warn(`Unknown open action: ${settings.openaction}`);
                     break;
             }
-
+        } else {
+            ev.action.showAlert();
+            streamDeck.logger.warn(`No folder path set!`);
         }
     }
 
@@ -92,6 +95,26 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
                 })
             }
         }
+    }
+
+    public override onDidReceiveSettings(ev: DidReceiveSettingsEvent<OpenFolderSettings>): Promise<void> | void {
+        this.isValidPath(ev.payload.settings.folderpath || "").then((isValid) => {
+            this.sendIsValidPathToPI(ev.action, isValid);
+        });
+    }
+    public override onPropertyInspectorDidAppear(ev: PropertyInspectorDidAppearEvent<OpenFolderSettings>): Promise<void> | void {
+        ev.action.getSettings() // Triggers onDidReceiveSettings -> updates PI
+    }
+
+    public async isValidPath(path: string): Promise<boolean> {
+        if (!path || path.trim() === "") return false;
+        return this.filesystem.pathExists(path.trim());
+    }
+
+    public sendIsValidPathToPI(action: DialAction<OpenFolderSettings> | KeyAction<OpenFolderSettings>, isValid: boolean): void {
+        streamDeck.ui.sendToPropertyInspector({
+            isValid: isValid
+        });
     }
 
 }

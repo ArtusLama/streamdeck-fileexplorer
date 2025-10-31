@@ -103,5 +103,9 @@ export class FileSystem implements FileSystemWrapper {
         }
     }
 
+    public async pathExists(path: string): Promise<boolean> {
+        return fs.pathExists(path);
+    }
+
 
 }

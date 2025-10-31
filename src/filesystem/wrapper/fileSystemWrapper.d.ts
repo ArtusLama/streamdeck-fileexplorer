@@ -95,4 +95,12 @@ export interface FileSystemWrapper {
      * @param filePath The file path to reveal.
      */
     revealFileInExplorer(filePath: string): Promise<void> | void;
+
+
+    /**
+     * Checks if the given path exists.
+     * @param path The file or directory path to check.
+     * @returns True if the path exists, false otherwise.
+     */
+    pathExists(path: string): Promise<boolean> | boolean;
 }

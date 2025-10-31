@@ -20,10 +20,38 @@
 
     <sdpi-item label="Folder Path">
         <sdpi-textfield
-            required
             setting="folderpath"
             placeholder="Enter folder path"
         ></sdpi-textfield>
+        <p style="color: red; opacity: 0.9; display: none;" id="pathWarning">
+            The provided path is not valid!
+            <br>
+            Please make sure the folder exists and the path format is correct.
+        </p>
+        <p style="color: green; opacity: 0.9; display: none;" id="pathValid">
+            Valid Path ✓
+        </p>
+        <div>
+            <p style="cursor: pointer; user-select: none; font-size: 1.2em;" id="rulesToggle">
+                <b>Path Rules:</b> <span id="rulesIndicator" style="font-size: 0.9em;">(Show more)</span>
+            </p>
+            <ul id="rulesList" style="display: none;">
+                <li>
+                    Use absolute paths only (e.g., <code>C:\Users\YourName\Something</code> on Windows or <code>/Users/YourName/Something</code> on Mac).
+                </li>
+                <li>
+                    The provided path must point to an existing folder.
+                </li>
+                <li>
+                    Don't escape spaces! The plugin handles that automatically.
+                </li>
+                <li>
+                    Don't start or end the path with quotes.
+                </li>
+            </ul>
+        </div>
+        
+
     </sdpi-item>
 
     <sdpi-item label="Click Action">
@@ -36,6 +64,7 @@
     </sdpi-item>
 
     <sdpi-item id="openprofileitem">
+        <sdpi-checkbox setting="openprofile" label="Automatically open Profile" default="true"></sdpi-checkbox>
         <p>
             Automatically open the FileExplorerView Profile when the folder gets opened.
             <br>
@@ -43,7 +72,6 @@
                 NOTE: Only MK2 StreamDecks currently support that. For other StreamDecks you have to create your own Profile and switching logic!
             </b>
         </p>
-        <sdpi-checkbox setting="openprofile" label="Automatically open Profile" default="true"></sdpi-checkbox>
         <p>Alternatively, you can use a Multi-Action and a SwitchProfile Action to achieve similar functionality.</p>
     </sdpi-item>
 
@@ -59,6 +87,8 @@
     </sdpi-item>
 
     <script>
+        const { streamDeckClient } = SDPIComponents;
+
 
         function updateCustomCommandItemVisibility() {
             const selectElement = document.querySelector('[setting="openaction"]');
@@ -73,10 +103,35 @@
 
         document.querySelector('[setting="openaction"]')
             .addEventListener("valuechange", updateCustomCommandItemVisibility);
-
-
         // Initial call to set the visibility based on the current value
         updateCustomCommandItemVisibility();
+
+
+        function updateIsValidPathWarning(isValid) {
+            const warningElement = document.getElementById("pathWarning");
+            warningElement.style.display = isValid ? "none" : "block";
+            validElement.style.display = isValid ? "block" : "none";
+        }
+
+        const warningElement = document.getElementById("pathWarning");
+        const validElement = document.getElementById("pathValid");
+        streamDeckClient.sendToPropertyInspector.subscribe(ev => {
+            if (ev.payload && typeof ev.payload.isValid === "boolean") {
+                updateIsValidPathWarning(ev.payload.isValid);
+            }
+        });
+
+        // Collapsible rules section
+        const rulesToggle = document.getElementById("rulesToggle");
+        const rulesList = document.getElementById("rulesList");
+        const rulesIndicator = document.getElementById("rulesIndicator");
+
+        rulesToggle.addEventListener("click", () => {
+            const isHidden = rulesList.style.display === "none";
+            rulesList.style.display = isHidden ? "block" : "none";
+            rulesIndicator.textContent = isHidden ? "(Show less)" : "(Show more)";
+        });
+
     </script>
 
 </body>
