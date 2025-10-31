@@ -65,6 +65,9 @@ class Analytics {
         this.client.capture({
             distinctId: this.userId,
             event: "plugin_started",
+            properties: {
+                os: process.platform,
+            }
         });
     }
 
