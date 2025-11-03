@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "cross-env NODE_ENV=production rollup -c",
+        "build": "cross-env NODE_ENV=production streamdeck pack de.artus.fileexplorer.sdPlugin -f",
         "watch": "cross-env NODE_ENV=development rollup -c -w --watch.onEnd=\"streamdeck restart de.artus.fileexplorer\"",
         "lint": "eslint --max-warnings 0"
     },
