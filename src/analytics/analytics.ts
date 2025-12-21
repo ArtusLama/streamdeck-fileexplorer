@@ -2,8 +2,6 @@ import streamDeck from "@elgato/streamdeck";
 import { PostHog } from "posthog-node";
 import { GlobalSettings } from "../types/globalSettings";
 import { PluginSecrets } from "../types/pluginSecrets";
-import { AnalyticsEvent } from "../types/analytics/analyticsEvent";
-
 
 
 async function isInitialLaunch(): Promise<boolean> {
@@ -79,19 +77,6 @@ class Analytics {
 
     public isDevEnvironment(): boolean {
         return process.env.NODE_ENV === "development";
-    }
-
-    public sendEvent(event: AnalyticsEvent): void {
-        if (this.isDevEnvironment()) {
-            streamDeck.logger.info(`Dev environment detected, analytics event "${event.event}" not sent`);
-            return;
-        }
-
-        this.client.capture({
-            distinctId: this.userId,
-            event: event.event,
-            properties: event.properties,
-        });
     }
 
 }

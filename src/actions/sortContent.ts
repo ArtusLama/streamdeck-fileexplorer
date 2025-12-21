@@ -3,7 +3,6 @@ import { SortContentSettings } from "../types/actions/settings/sortContentSettin
 import { GlobalFolderViewSettings } from "../filesystem/streamdeck/settings/globalSettings";
 import { FolderViewSortDirection } from "../types/folderViewSettings/sortDirection";
 import { FolderViewSortType } from "../types/folderViewSettings/sortType";
-import { Analytics } from "../analytics/analytics";
 
 /**
  * This StreamDeck action allows to sort the content of the currently opened folder on the Stream Deck.
@@ -61,7 +60,6 @@ export class SortContent extends SingletonAction<SortContentSettings> {
                     switchSetting: switchSetting
                 }).then(() => {
                     this.updateKeyTitleAndState(ev.action, defaultedSettings.updateTitleToType, switchSetting === "type");
-                    this.sendAnalytics(switchSetting === "type" ? "sort_type" : "sort_direction");
                 });
             }
 
@@ -89,11 +87,9 @@ export class SortContent extends SingletonAction<SortContentSettings> {
             switch (defaultedSettings.switchSetting) {
                 case "type":
                     globalSettings.sortType = this.getNextSetting<FolderViewSortType>(allSettings.sortType, globalSettings.sortType);
-                    this.sendAnalytics("sort_type");
                     break;
                 case "direction":
                     globalSettings.sortDirection = this.getNextSetting<FolderViewSortDirection>(allSettings.sortDirection, globalSettings.sortDirection);
-                    this.sendAnalytics("sort_direction");
                     break;
             }
 
@@ -177,15 +173,6 @@ export class SortContent extends SingletonAction<SortContentSettings> {
         } else {
             return allSettings[currentIndex + 1];
         }
-    }
-
-    public sendAnalytics(changed: "sort_direction" | "sort_type"): void {
-        Analytics.instance?.sendEvent({
-            event: "sort_changed",
-            properties: {
-                changed: changed
-            }
-        })
     }
 
 }

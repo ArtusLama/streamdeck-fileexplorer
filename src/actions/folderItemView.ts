@@ -4,8 +4,6 @@ import { FolderViewManager } from "../filesystem/streamdeck/devices/deviceManage
 import { FolderView } from "../filesystem/streamdeck/devices/folderView";
 import { VirtualFolderItem } from "../filesystem/streamdeck/virtualFolderItem/virtualFolderItem";
 import { getFolderItemImage } from "../utils/svgFactoty";
-import { Analytics } from "../analytics/analytics";
-
 
 /**
  * This StreamDeck action displays one item of a folder which is opened on the StreamDeck.
@@ -33,7 +31,6 @@ export class FolderItemView extends SingletonAction<FolderItemViewSettings> {
             const virtualFolderItem = folderView.folderItemManager.getVirtualFolderItemForAction(actionId);
             if (virtualFolderItem) {
                 virtualFolderItem.onClick("long");
-                this.sendClickAnalytics("long");
             }
 
             this.longPressTimeout.delete(actionId);
@@ -58,7 +55,6 @@ export class FolderItemView extends SingletonAction<FolderItemViewSettings> {
             const virtualFolderItem = folderView.folderItemManager.getVirtualFolderItemForAction(actionId);
             if (virtualFolderItem) {
                 virtualFolderItem.onClick("normal");
-                this.sendClickAnalytics("normal");
             }
         }
     }
@@ -176,15 +172,6 @@ export class FolderItemView extends SingletonAction<FolderItemViewSettings> {
         return action !== undefined && action.isKey() && !action?.isInMultiAction();
     }
 
-
-    public sendClickAnalytics(actionType: "long" | "normal"): void {
-        Analytics.instance?.sendEvent({
-            event: "folder_item_clicked",
-            properties: {
-                click_type: actionType
-            }
-        })
-    }
     
 
 

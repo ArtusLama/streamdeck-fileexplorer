@@ -4,7 +4,6 @@ import { FileSystem } from "../filesystem/wrapper/impl/fileSystem";
 import spawn from "cross-spawn";
 import argv from "string-argv";
 import { FolderViewManager } from "../filesystem/streamdeck/devices/deviceManager";
-import { Analytics } from "../analytics/analytics";
 
 
 /**
@@ -23,15 +22,6 @@ export class OpenFolder extends SingletonAction<OpenFolderSettings> {
         const settings = await ev.action.getSettings();
 
         if (settings.folderpath) {
-
-            if (settings.openaction) {
-                Analytics.instance?.sendEvent({
-                    event: "open_folder",
-                    properties: {
-                        open_action: settings.openaction
-                    }
-                });
-            }
 
             switch (settings.openaction) {
                 case "streamdeck":

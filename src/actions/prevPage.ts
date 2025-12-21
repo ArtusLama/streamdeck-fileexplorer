@@ -1,7 +1,6 @@
 import streamDeck, { action, DialAction, DidReceiveSettingsEvent, KeyAction, KeyDownEvent, KeyUpEvent, SingletonAction, WillAppearEvent, WillDisappearEvent } from "@elgato/streamdeck";
 import { FolderViewManager } from "../filesystem/streamdeck/devices/deviceManager";
 import { PrevPageSettings } from "../types/actions/settings/prevPageSetting";
-import { Analytics } from "../analytics/analytics";
 
 
 /**
@@ -29,11 +28,9 @@ export class PrevPage extends SingletonAction<PrevPageSettings> {
             switch (settings.longpressaction) {
                 case "prev":
                     folderView.openPreviousPage()
-                    this.sendClickAnalytics("backward", "previous");
                     break;
                 case "first":
                     folderView.openFirstPage()
-                    this.sendClickAnalytics("backward", "first");
                     break;
             }
 
@@ -60,11 +57,9 @@ export class PrevPage extends SingletonAction<PrevPageSettings> {
             switch (settings.clickaction) {
                 case "prev":
                     folderView.openPreviousPage()
-                    this.sendClickAnalytics("backward", "previous");
                     break;
                 case "first":
                     folderView.openFirstPage()
-                    this.sendClickAnalytics("backward", "first");
                     break;
             }
         }
@@ -148,16 +143,6 @@ export class PrevPage extends SingletonAction<PrevPageSettings> {
             longpresstrigger: settings.longpresstrigger ?? 500,
             showcurrentpage: settings.showcurrentpage ?? false
         };
-    }
-
-    public sendClickAnalytics(direction: "backward" | "forward", target: "first" | "last" | "next" | "previous"): void {
-        Analytics.instance?.sendEvent({
-            event: "page_navigated",
-            properties: {
-                direction: direction,
-                target: target
-            }
-        })
     }
 
 
